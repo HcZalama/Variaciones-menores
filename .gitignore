@@ -1,0 +1,11 @@
+# Compiled output — regenerable from source, so don't version it
+*.pdf
+*.midi
+*.mid
+*.ps
+*.log
+
+# Editor / OS noise
+.vscode/
+*~
+.directory
