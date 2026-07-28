@@ -20,7 +20,7 @@
   tagline  = ##f
 }
 
-global = { \key re \minor \time 3/4 }
+global = { \key la \minor \time 3/4 }
 
 
 %% ===========================================================
@@ -36,15 +36,15 @@ global = { \key re \minor \time 3/4 }
 
 %% (a) PLAIN — one note per bar. The skeleton.
 tema = \fixed do, {
-  re2. sol la mi fa sib sol la
+  la2. re' mi' fa' si do' re' mi' 
 }
 
 %% (b) WALKING — same eight harmonies, filled with passing notes.
 %%     Beat 1 of each bar is still the ground note. Always check
 %%     that: it's what keeps the variations locked together.
 temaAndante = \fixed do, {
-  re4 mi fa  | sol4 la sib | la4 sol fa  | mi4 fa sol  |
-  fa4 sol la | sib4 la sol | sol4 la sib | la2.        |
+  la4 si dos'  | re'4 mi' fa' | mi'4 fa' sol'  | fa'4 re' do'  |
+  si2 re'4 | do'2 mi'4 | re'2 fa'4 | mi'4 re' mi'        |
 }
 
 %% (c) PROTAGONIST — running quavers, arpeggios, the pedal sings.
