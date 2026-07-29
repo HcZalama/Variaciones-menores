@@ -20,7 +20,11 @@
   tagline  = ##f
 }
 
-global = { \key la \minor \time 3/4 }
+global = {
+  \key la \minor
+  \time 3/4
+  \tempo 4 = 90
+}
 
 
 %% ===========================================================
@@ -34,10 +38,22 @@ global = { \key la \minor \time 3/4 }
 %%  and it's what Buxtehude (BuxWV 161) and Bach (BWV 582) do.
 %% ===========================================================
 
+
 %% (a) PLAIN — one note per bar. The skeleton.
-tema = \fixed do, {
+temaAlto = \relative do {
+  la4 la la re re re mi mi mi  fa fa fa si, si si do do do re re re mi mi mi 
+}
+temaReBajo = \fixed do,, {
   la2. re' mi' fa' si do' re' mi' 
 }
+temaReReBajo = \fixed do,,, {
+  la2. re' mi' fa' si do' re' mi' 
+}
+
+
+temaBajo = <<  \temaReBajo \\ \temaReReBajo   >>
+
+tema = <<  \temaAlto \\ \temaBajo   >>
 
 %% (b) WALKING — same eight harmonies, filled with passing notes.
 %%     Beat 1 of each bar is still the ground note. Always check
@@ -56,106 +72,184 @@ temaProtagonista = \fixed do, {
   sol8 sib re' sol' fa' mi'  | la8 dos' mi' sol' mi' dos' |
 }
 
-%% Add your own later — the pattern is always the same:
-%%   temaSincopado  = \fixed do, { ... }
-%%   temaCanon      = \fixed do, { ... }
-%% then just name it in the \pedal assembly below.
 
 
-%% ===========================================================
-%%  LOS MANUALES — one variable per variation
-%%
-%%  Why split them up instead of one long variable? Because
-%%  \relative accumulates: a rising sequence in bar 20 shifts
-%%  the octave of everything after it. Anchoring each section
-%%  separately keeps the registers where you put them.
-%% ===========================================================
 
-%% Var. II — chords enter over the plain ground
-dosRH = \relative do'' {
-  la2. | sib | la | sol | la | sib | re | dos |
-}
-dosLH = \relative do' {
-  <la re>2. | <sib re> | <la dos> | <sol sib> |
-  <la do>   | <sib re> | <sol sib> | <la dos> |
-}
 
-%% Var. III — right hand moves in quavers, rising through the phrase
-tresRH = \relative do'' {
-  fa8 mi re mi fa sol   | sol8 fa mi fa sol la  |
-  la8 sol fa sol la sib | sib8 la sol la sib do |
-  do8 sib la sib do re  | re8 do sib la sol fa  |
-  sol8 la sib do re mi  | fa2.                  |
-}
-tresLH = \relative do' {
-  <la re>2. | <sib re> | <la dos> | <sol sib> |
-  <la do>   | <sib re> | <sol sib> | <la dos> |
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%    MINUS     %%%%%%%%%%%%%%
+minusRH = \relative do'' {
+  la4 la re8 mi | fa8 mi fa2 | do4 do fa8 sol  | la8 sol la2 | sol4 sol fa | mi sol,8 do re8 mi |  fa4 fa mi | re sols,8 si do re |
 }
 
-%% Var. IV — manuals sustain, pedal takes over
-%%   \fixed do' = bare names live in the octave C4–B4.
-%%   No octave arithmetic, no surprises.
-cuatroRH = \fixed do' {
-  <re fa la>2. | <re sol sib> | <dos mi la> | <mi sol sib> |
-  <do fa la>   | <re fa sib>  | <re sol sib> | <dos mi la> |
+vozAltaminus = \relative do'  {  mi2. | re2  mi8 re | do4 sol'2 | fa2 fa8 mi| re2 re4 | do4 mi do | la'2. | sols4 mi2| 
 }
+
+vozBajaminus = \relative do' { la4 la si8 do |  la2.|  sol4 do2 | do2 re4 | sol,2 la4 | sol2. | fa4 re' do | si do4. si8| 
+}
+
+minusLH = <<  \vozAltaminus \\ \vozBajaminus   >>
+
+
+%%%%%%%%%%%    ZERO     %%%%%%%%%%%%%%
+
+
+zeroRH = \relative do'' {
+  do4 do si | la4 fa' r4 | r4 do sib | la4 la'2~ |  la4 sols si | mi, do' la | r4 re, fa | mi mi re8 do16 si
+}
+
+vozAltazero = \relative do'  {  mi2. | re2 si4 | do2. | do4 la8 si do re  | mi2 sols4 | la4 mi2 | fa2 la4 | sols4 si sols | 
+}
+
+vozBajazero = \relative do' { la4 la sol4 | fa8 sol la2 | sol2. | la4 fa4 fa'  | mi4 mi re | do2. | si2. | mi4 sols mi| 
+}
+
+zeroLH = <<  \vozAltazero \\ \vozBajazero   >>
+
+
+
+
+
+%%%%%%%%%%%    ONE     %%%%%%%%%%%%%%
+oneRH = \relative do'' {
+  do4 la do | fa4 re4 la'4 | sol mi sol | do, la la'   |  sols2 re4 |do la'2 |  fa do4 | si4 sols'2
+}
+
+
+
+
+%%%%%%%%%%%   TWO      %%%%%%%%%%%%%%
+twoRH = \relative do'' {
+  la4 do la |  fa fa'8 sol la si | do4 sol,8 la sib4| la sib do |  re8 mi fa4 re~ | re do si |  si2. | si  
+}
+
+
+
+%%%%%%%%%%%    THREE     %%%%%%%%%%%%%%
+threeRH = \relative do'' {
+  do8 si la sols la do | fa2 la,4 | sols8 fas mi re mi sols | la4 do re~ | re mi fa~ | fa mi do | si2 do4 | si2 sols'8 fas |  
+}
+
+
+%%%%%%%%%%%    FOUR     %%%%%%%%%%%%%%
+
+fourRH = \relative do'' {
+  do 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%% PRIMER PENTAGRAMA
+
+
+% twoRH = \relative do'' {
+%   la4 do la |  fa fa'8 sol la si | do4 sol,8 la sib4| la sib do |  re8 mi fa4 re~ | re do si |  si2. | si  
+% }
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%% SEGUNDO PENTAGRAMA
+
+%%%
+
+
+
+
 
 
 %% ===========================================================
 %%  MONTAJE — the form, in three readable lines
-%%
-%%  Want to reorder the piece? Reorder these. Want another
-%%  variation? Write it above, add its name here. This is
-%%  where composing actually happens.
-%%
-%%    Var I   : pedal alone, bare       (s2.*8 = manuals tacent)
-%%    Var II  : chords enter
-%%    Var III : right hand in quavers
-%%    Var IV  : PEDAL SOLO — the protagonism
-%% ===========================================================
 
 manoDerecha = {
   \global
-  \mark \markup { \bold "Ped." \italic " 16' 8'" }
-  s2.*8 |
-  \bar "||" \mark \markup { \bold "Gt." \italic " 8'" }
-  \dosRH
+  \minusRH
+  \zeroRH
+  \oneRH
+  \twoRH
+  \threeRH
   \bar "||" \mark \markup { \bold "Gt." \italic " 8' 4'" }
-  \tresRH
-  \bar "||" \mark \markup { \bold "Gt." \italic " 8' — Ped. solo" }
-  \cuatroRH
+  %\unoRH
+
   \bar "|."
 }
 
 manoIzquierda = {
   \global
-  s2.*8 | \dosLH \tresLH s2.*8 |
+  \minusLH
+  \zeroLH 
 }
 
 pedal = {
   \global
-  \tema              % Var I   — bare
-  \tema              % Var II  — unchanged under the chords
-  \temaAndante       % Var III — starts to move
-  \temaProtagonista  % Var IV  — takes the stage
+  \tema              
+  \tema              
+  \tema
+  \tema
+  \tema
+  \tema
+
 }
 
 
+% OTHER SOUNDS POSSIBLE OTHER SOUNDS SONIDOS INSTRUMENTOS
+% "church organ"       "reed organ"        "drawbar organ"
+% "percussive organ"   "rock organ"        "accordion"
+% "harpsichord"        "clavinet"          "acoustic grand"
+% "string ensemble 1"  "choir aahs"        "flute"
+
 \score {
-  <<
-    \new PianoStaff \with { instrumentName = "Man." } <<
-      \new Staff \with { midiInstrument = "church organ" } {
+
+  <<                                                  % ABRE todo (1)
+
+    \new PianoStaff \with { instrumentName = "Man." }
+    <<                                                % ABRE los manuales (2)
+
+      \new Staff \with { midiInstrument = "drawbar organ" } {
         \clef treble \manoDerecha
       }
-      \new Staff \with { midiInstrument = "church organ" } {
+
+      \new Staff \with { midiInstrument = "drawbar organ" } {
         \clef bass \manoIzquierda
       }
-    >>
+
+    >>                                                % CIERRA los manuales (2)
+
     \new Staff \with {
       instrumentName = "Ped."
       midiInstrument = "church organ"
-    } { \clef bass \pedal }
-  >>
+    } {
+      \clef bass \pedal
+    }
+
+  >>                                                  % CIERRA todo (1)
+
   \layout { }
   \midi { \context { \Score midiChannelMapping = #'staff } }
 }

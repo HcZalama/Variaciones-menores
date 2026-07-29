@@ -9,14 +9,15 @@
 \language "espanol"
 
 %% ---- Key, metre, tempo, all in one place -----------------
-%%  \tempo does two jobs at once:
+%%  \ does two jobs at once:
 %%    - prints a metronome mark on the score
 %%    - sets the playback speed of the MIDI
 %%  Change 92 and both follow.
 global = {
   \key re \minor
   \time 3/4
-  \tempo 4 = 92
+  %\once \override Score.MetronomeMark.stencil = ##f
+  \tempo 4 = 180
 }
 
 %% ---- Page setup ------------------------------------------
