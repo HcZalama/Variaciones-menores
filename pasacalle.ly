@@ -37,7 +37,7 @@ tema     = << \temaAlto \\ \temaBajo >>
 
 minusRH = \relative do'' {
 
-la4 la re8 mi | fa8 mi fa2 | sol,4 do fa8 sol | la8 sol la2 | sol4 sol fa | mi sol,8 do re8 mi | fa4 fa mi | re sols,8 si do re |
+la4 do re8 mi | fa8 mi fa2 | sol,4 do fa8 sol | la8 sol la2 | sol4 sol fa | mi sol,8 do re8 mi | fa4 fa mi | re sols,8 si do re |
 
 }
 
