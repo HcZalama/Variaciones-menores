@@ -9,3 +9,10 @@
 .vscode/
 *~
 .directory
+
+
+# LilyPond temporary files
+lilypond-tmp-*
+*.pdf
+*.midi
+*.mid
