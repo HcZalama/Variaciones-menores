@@ -37,7 +37,7 @@ tema     = << \temaAlto \\ \temaBajo >>
 
 minusRH = \relative do'' {
 
-la4 la re8 mi | fa8 mi fa2 | do4 do fa8 sol | la8 sol la2 | sol4 sol fa | mi sol,8 do re8 mi | fa4 fa mi | re sols,8 si do re |
+la4 la re8 mi | fa8 mi fa2 | sol,4 do fa8 sol | la8 sol la2 | sol4 sol fa | mi sol,8 do re8 mi | fa4 fa mi | re sols,8 si do re |
 
 }
 
@@ -47,7 +47,7 @@ vozAltaminus = \relative do' { mi2. | re2 mi8 re | do4 sol'2 | fa2 fa8 mi| re2 r
 }
 
 
-vozBajaminus = \relative do' { la4 la si8 do | la2.| sol4 do2 | do2 re4 | sol,2 la4 | sol2. | fa4 re' do | si do4. si8|
+vozBajaminus = \relative do' { la4 la si8 do | la2.| sol2 do4 | do2 re4 | sol,2 la4 | sol2. | fa4 re' do | si do4. si8|
 
 }
 
