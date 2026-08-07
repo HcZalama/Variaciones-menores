@@ -1,18 +1,16 @@
-# Compiled output — regenerable from source, so don't version it
+# Compiled output & build folder
+build/
 *.pdf
 *.midi
 *.mid
 *.ps
 *.log
 
+# LilyPond temporary files from standard input / extensions
+lilypond-tmp-*
+-.pdf
+
 # Editor / OS noise
 .vscode/
 *~
 .directory
-
-
-# LilyPond temporary files
-lilypond-tmp-*
-*.pdf
-*.midi
-*.mid

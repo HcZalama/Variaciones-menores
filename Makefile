@@ -1,25 +1,27 @@
 # Build the score. Run `make` — or Ctrl+Shift+B in VS Code.
-# Tab-indented, like every Makefile you have ever written.
 
 MAIN = pasacalle
+OUT_DIR = build
 
-all: $(MAIN).pdf
+all: $(OUT_DIR)/$(MAIN).pdf
 
-# Rebuilds if the master, the settings, OR any file in music/ changed.
-$(MAIN).pdf: $(MAIN).ly settings.ly $(wildcard music/*.ly)
-	lilypond $(MAIN).ly
+# Rebuilds if the master, settings, or any music file changes
+$(OUT_DIR)/$(MAIN).pdf: $(MAIN).ly settings.ly $(wildcard music/*.ly)
+	@mkdir -p $(OUT_DIR)
+	lilypond -o $(OUT_DIR)/ $(MAIN).ly
 
 scratch:
-	lilypond -o scratch scratch.ly
+	@mkdir -p $(OUT_DIR)
+	lilypond -o $(OUT_DIR)/scratch scratch.ly
 
-play: $(MAIN).midi
-	timidity $(MAIN).midi
+play: $(OUT_DIR)/$(MAIN).midi
+	timidity $(OUT_DIR)/$(MAIN).midi
 
 # Send to GrandOrgue (start it first, with a sample set loaded)
-organ: $(MAIN).midi
-	aplaymidi -p $$(aplaymidi -l | grep -i grandorgue | awk '{print $$1}') $(MAIN).midi
+organ: $(OUT_DIR)/$(MAIN).midi
+	aplaymidi -p $$(aplaymidi -l | grep -i grandorgue | awk '{print $$1}') $(OUT_DIR)/$(MAIN).midi
 
 clean:
-	rm -f *.pdf *.midi *.log *.ps
+	rm -rf $(OUT_DIR) *.pdf *.midi *.log *.ps lilypond-tmp-* -.pdf
 
 .PHONY: all scratch play organ clean
